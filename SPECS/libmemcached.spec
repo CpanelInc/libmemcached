@@ -6,7 +6,8 @@
 Name: %{libname}
 Version: 1.0.18
 Summary: libmemcached standard library for interacting with memcached
-Release: 1%{?dist}
+%define release_prefix 1
+Release: %{release_prefix}%{?dist}.cpanel
 License: BSD
 Group: System Environment/Libaries
 URL: http://libmemcached.org/libMemcached.html
