@@ -67,7 +67,9 @@ memtouch    Touches a key
   --with-memcached=false \
   --disable-sasl \
   --enable-libmemcachedprotocol \
+%if 0%{?el6}
   --enable-memaslap \
+%endif
   --enable-dtrace \
   --disable-static
 
