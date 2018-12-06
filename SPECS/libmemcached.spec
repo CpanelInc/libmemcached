@@ -3,10 +3,10 @@
 # CentOS 6 only provides libmemcached .31 and .44 or greater is required for php-memcached.
 %global libname libmemcached
 
-Name: %{libname}
+Name: ea-%{libname}
 Version: 1.0.18
 Summary: libmemcached standard library for interacting with memcached
-%define release_prefix 1
+%define release_prefix 2
 Release: %{release_prefix}%{?dist}.cpanel
 License: BSD
 Group: System Environment/Libaries
@@ -32,7 +32,7 @@ Provides:   %{libname}-devel         = %{version}-%{release}
 
 %description devel
 This package contains the header files and development libraries
-for %{name}. If you like to develop programs using %{name}, 
+for %{name}. If you like to develop programs using %{name},
 you will need to install %{name}-devel.
 
 
@@ -125,5 +125,8 @@ ldconfig
 %{_usr}/local/share/man/man3/hashkit*
 
 %ChangeLog
-* Sat Mar  4 2017 Jack Hayhurst <jack@deleteos.com> - 0.2
+* Wed Dec 05 2018 Cory McIntire <cory@cpanel.net> - 1.0.18-2
+- EA-8032: Move into the ea- namespace to avoid conflicts with base repos
+
+* Sat Mar 04 2017 Jack Hayhurst <jack@deleteos.com> - 0.2
 - wrote initial libmemcached spec
