@@ -86,7 +86,9 @@ you will need to install %{name}-devel.
 %{__mkdir} examples
 
 %build
+%if 0%{?rhel} >= 8
 export CXXFLAGS="-fpermissive"
+%endif
 %configure
 %{__make} %{?_smp_mflags}
 
