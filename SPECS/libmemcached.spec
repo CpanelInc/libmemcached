@@ -5,7 +5,7 @@
 Name:      ea-%{libname}
 Summary:   memcached C library and command line tools
 Version:   1.0.18
-%define    release_prefix 5
+%define    release_prefix 6
 Release:   %{release_prefix}%{?dist}.cpanel
 License:   BSD
 Group:     System Environment/Libraries
@@ -338,6 +338,9 @@ you will need to install %{name}-devel.
 
 
 %changelog
+* Fri May 22 2020 Julian Brown <julian.brown@cpanel.net> - 1.0.18-6
+- ZC-6849: Fix for C8
+
 * Mon Apr 13 2020 Tim Mullin <tim@cpanel.net> - 1.0.18-5
 - EA-8979: Ensure the package owns /opt/cpanel/libmemcached
 
