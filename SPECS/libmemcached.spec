@@ -36,9 +36,16 @@ BuildRequires: libuuid-devel
 BuildRequires: make
 BuildRequires: memcached
 BuildRequires: pkgconfig
-BuildRequires: python-sphinx
 BuildRequires: sed
 BuildRequires: tar
+
+
+%if 0%{?rhel} >= 8
+BuildRequires: python36
+BuildRequires: python3-sphinx
+%else
+BuildRequires: python-sphinx
+%endif
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -79,6 +86,7 @@ you will need to install %{name}-devel.
 %{__mkdir} examples
 
 %build
+export CXXFLAGS="-fpermissive"
 %configure
 %{__make} %{?_smp_mflags}
 
