@@ -5,7 +5,7 @@
 Name:      ea-%{libname}
 Summary:   memcached C library and command line tools
 Version:   1.0.18
-%define    release_prefix 5
+%define    release_prefix 6
 Release:   %{release_prefix}%{?dist}.cpanel
 License:   BSD
 Group:     System Environment/Libraries
@@ -36,9 +36,16 @@ BuildRequires: libuuid-devel
 BuildRequires: make
 BuildRequires: memcached
 BuildRequires: pkgconfig
-BuildRequires: python-sphinx
 BuildRequires: sed
 BuildRequires: tar
+
+
+%if 0%{?rhel} >= 8
+BuildRequires: python36
+BuildRequires: python3-sphinx
+%else
+BuildRequires: python-sphinx
+%endif
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -79,6 +86,9 @@ you will need to install %{name}-devel.
 %{__mkdir} examples
 
 %build
+%if 0%{?rhel} >= 8
+export CXXFLAGS="-fpermissive"
+%endif
 %configure
 %{__make} %{?_smp_mflags}
 
@@ -338,6 +348,9 @@ you will need to install %{name}-devel.
 
 
 %changelog
+* Fri May 22 2020 Julian Brown <julian.brown@cpanel.net> - 1.0.18-6
+- ZC-6849: Fix for C8
+
 * Mon Apr 13 2020 Tim Mullin <tim@cpanel.net> - 1.0.18-5
 - EA-8979: Ensure the package owns /opt/cpanel/libmemcached
 
