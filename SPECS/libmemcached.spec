@@ -44,7 +44,7 @@ BuildRequires: tar
 BuildRequires: python36
 BuildRequires: python3-sphinx
 %else
-%if 0%{?rhel} == 8
+%if 0%{?rhel} == 9
 BuildRequires: python3
 BuildRequires: python3-sphinx
 %endif
