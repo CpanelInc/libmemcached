@@ -5,7 +5,7 @@
 Name:      ea-%{libname}
 Summary:   memcached C library and command line tools
 Version:   1.0.18
-%define    release_prefix 6
+%define    release_prefix 7
 Release:   %{release_prefix}%{?dist}.cpanel
 License:   BSD
 Group:     System Environment/Libraries
@@ -40,10 +40,14 @@ BuildRequires: sed
 BuildRequires: tar
 
 
-%if 0%{?rhel} >= 8
+%if 0%{?rhel} == 8
 BuildRequires: python36
 BuildRequires: python3-sphinx
 %else
+%if 0%{?rhel} == 9
+BuildRequires: python3
+BuildRequires: python3-sphinx
+%endif
 BuildRequires: python-sphinx
 %endif
 
@@ -348,6 +352,9 @@ export CXXFLAGS="-fpermissive"
 
 
 %changelog
+* Thu Sep 29 2022 Julian Brown <julian.brown@cpanel.net> - 1.0.18-7
+- ZC-10009: Add changes so that it builds on AlmaLinux 9
+
 * Fri May 22 2020 Julian Brown <julian.brown@cpanel.net> - 1.0.18-6
 - ZC-6849: Fix for C8
 
